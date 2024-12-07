@@ -36,12 +36,6 @@ func readInput(path string) ([]Locations, error) {
 	locations = append(locations, locationOne)
 	locations = append(locations, locationTwo)
 
-	return locations, nil
-}
-
-func ProcessAnswer(path string) int {
-	locations, _ := readInput(path)
-
 	slices.SortStableFunc(locations[0], func(a, b int64) int {
 		if a < b {
 			return -1
@@ -65,6 +59,12 @@ func ProcessAnswer(path string) int {
 
 		return 0
 	})
+
+	return locations, nil
+}
+
+func ProcessAnswer(path string) int {
+	locations, _ := readInput(path)
 
 	var sum int
 	for i := range locations[1] {
